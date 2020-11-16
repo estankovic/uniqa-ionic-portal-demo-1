@@ -4,6 +4,7 @@ import {MainPortalHeaderComponent} from './components/main-portal-header/main-po
 import {IonicModule} from '@ionic/angular';
 import {PortalSubHeaderComponent} from './components/portal-sub-header/portal-sub-header.component';
 import {ContentComponent} from './components/content/content.component';
+import {HeaderComponent} from './components/header/header.component';
 
 
 
@@ -11,7 +12,8 @@ import {ContentComponent} from './components/content/content.component';
   declarations: [
       MainPortalHeaderComponent,
       PortalSubHeaderComponent,
-      ContentComponent
+      ContentComponent,
+      HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import {ContentComponent} from './components/content/content.component';
   exports: [
       MainPortalHeaderComponent,
       PortalSubHeaderComponent,
-      ContentComponent
+      ContentComponent,
+      HeaderComponent
   ]
 })
 export class SharedModule { }

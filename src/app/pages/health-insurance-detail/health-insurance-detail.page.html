@@ -1,9 +1,11 @@
-<app-main-portal-header *ngIf="!isMobile"></app-main-portal-header>
-<app-portal-sub-header *ngIf="!isMobile">
-  <ion-icon slot="start" name="arrow-back"></ion-icon>
-  <h1 slot="title">Krankenversicherung</h1>
-  <ion-button slot="end" color="secondary">Leistung einreichen</ion-button>
-</app-portal-sub-header>
+<app-header *ngIf="!isMobile">
+  <app-main-portal-header></app-main-portal-header>
+  <app-portal-sub-header>
+    <ion-icon slot="start" name="arrow-back"></ion-icon>
+    <h1 slot="title">Krankenversicherung</h1>
+    <ion-button slot="end" color="secondary">Leistung einreichen</ion-button>
+  </app-portal-sub-header>
+</app-header>
 
 <ion-header *ngIf="isMobile">
   <ion-toolbar color="primary">
