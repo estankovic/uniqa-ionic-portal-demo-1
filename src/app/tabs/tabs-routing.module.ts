@@ -13,15 +13,19 @@ const routes: Routes = [
             import('../pages/health-insurance-detail/health-insurance-detail.module').then(m => m.HealthInsuranceDetailPageModule)
       },
       {
+        path: 'contracts',
+        loadChildren: () => import('../pages/contracts/contracts.module').then( m => m.ContractsPageModule)
+      },
+      {
         path: '',
-        redirectTo: '/tabs/health-detail',
+        redirectTo: '/tabs/contracts',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/health-detail',
+    redirectTo: '/tabs/contracts',
     pathMatch: 'full'
   }
 ];

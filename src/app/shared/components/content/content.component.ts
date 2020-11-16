@@ -1,13 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Platform} from '@ionic/angular';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  styleUrls: ['./content.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  @HostBinding('attr.has-side-content')
+  @Input()
+  hasSideContent = false;
+
+  @HostBinding('class.isMobile')
+  get isMobile() {
+    return this.platform.is('mobileweb') || this.platform.is('mobile');
+  }
+
+  constructor(private readonly platform: Platform) { }
 
   ngOnInit() {}
 

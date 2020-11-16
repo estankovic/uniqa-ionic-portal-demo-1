@@ -1,7 +1,41 @@
 :host {
   display: block;
   margin: 0 auto;
-  max-width: 763px;
+  max-width: 762px;
 
-
+  .side {
+    display: none;
+  }
 }
+
+
+// this should contain brake points and so on
+:host([has-side-content]:not(.isMobile)) {
+  max-width: 1440px;
+
+  display: flex;
+  justify-content: space-between;
+
+  background-color: #F0F2F5;
+
+
+  ::slotted([slot=main]) {
+    width: 762px;
+    margin-left: 8rem;
+  }
+
+  ::slotted([slot=side]) {
+    width: 380px;
+    margin-right: 2rem;
+  }
+}
+
+:host([has-side-content].isMobile) {
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F2F5;
+
+
+  padding: 1rem;
+}
+
