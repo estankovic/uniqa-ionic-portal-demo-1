@@ -1,0 +1,7 @@
+{
+  "name": "ionic-portal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
