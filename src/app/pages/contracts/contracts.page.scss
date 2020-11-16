@@ -1,0 +1,108 @@
+
+
+
+section {
+  margin-top: 2rem;
+
+  .header {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    h1 {
+      color: #1B1B1B;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+}
+
+
+.card {
+  box-sizing: border-box;
+  border: 1px solid #D5DEEE;
+  border-radius: .25rem;
+  background-color: #FFFFFF;
+  padding: 1rem;
+
+
+  &__header {
+
+
+    display: flex;
+
+    &__icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 4px;
+      background-color: #23A5AD;
+    }
+
+    &__text {
+
+      display: flex;
+      flex-direction: column;
+
+      margin-left: 1rem;
+
+      &__title {
+        font-family: 'Lato', sans-serif;
+        font-size: 19px;
+        font-weight: 900;
+      }
+
+      &__sub-text {
+        font-size: 1rem;
+        color: #617384;
+      }
+    }
+
+    &__action {
+      display: flex;
+      align-items: center;
+
+      ion-icon {
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  &__content {
+
+    border-top: 1px dashed #D0D4DA;
+
+    margin-top: 1rem;
+    padding-top: .5rem;
+
+    &__title {
+      color: #536372;
+      padding: .5rem 0;
+    }
+
+    &__item {
+      display: flex;
+
+      align-items: center;
+
+      &__title {
+        color: var(--ion-color-primary);
+        margin-right: 1rem;
+      }
+
+      &__badge {
+        font-size: .75rem;
+        background-color: var(--ion-color-primary);
+        color: white;
+        border-radius: 8px;
+        padding: 2px 4px;
+      }
+
+      &__note {
+        color: #536372;
+      }
+    }
+
+  }
+
+}
