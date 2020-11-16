@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 
 @Component({
   selector: 'app-health-insurance-detail',
@@ -13,9 +13,16 @@ export class HealthInsuranceDetailPage implements OnInit {
     return this.platform.is('mobileweb') || this.platform.is('mobile');
   }
 
-  constructor(private readonly platform: Platform) { }
+  constructor(
+      private readonly platform: Platform,
+      private readonly nav: NavController
+  ) { }
 
   ngOnInit() {
+  }
+
+  navigateBack() {
+    this.nav.back();
   }
 
 }

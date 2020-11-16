@@ -1,7 +1,7 @@
 <app-header *ngIf="!isMobile">
   <app-main-portal-header></app-main-portal-header>
   <app-portal-sub-header>
-    <ion-icon slot="start" name="arrow-back"></ion-icon>
+    <ion-icon slot="start" name="arrow-back" (click)="navigateBack()"></ion-icon>
     <h1 slot="title">Krankenversicherung</h1>
     <ion-button slot="end" color="secondary">Leistung einreichen</ion-button>
   </app-portal-sub-header>
@@ -10,7 +10,7 @@
 <ion-header *ngIf="isMobile">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button>
+      <ion-button (click)="navigateBack()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,20 +20,22 @@
 
 <ion-content>
   <app-content>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+      <div slot="main">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+      </div>
   </app-content>
 </ion-content>

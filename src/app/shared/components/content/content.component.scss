@@ -10,7 +10,7 @@
 
 
 // this should contain brake points and so on
-:host([has-side-content]:not(.isMobile)) {
+:host([has-side-content=true]:not(.isMobile)) {
   max-width: 1440px;
 
   display: flex;
@@ -30,7 +30,7 @@
   }
 }
 
-:host([has-side-content].isMobile) {
+:host([has-side-content=true].isMobile) {
   display: flex;
   flex-direction: column;
   background-color: #F0F2F5;

@@ -3,7 +3,7 @@
     flex: 1;
   }
 
-  app-content {
+  [slot=main] {
     display: flex;
     flex-direction: row;
     align-items: center;

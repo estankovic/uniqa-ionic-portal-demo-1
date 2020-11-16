@@ -8,11 +8,6 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'health-detail',
-        loadChildren: () =>
-            import('../pages/health-insurance-detail/health-insurance-detail.module').then(m => m.HealthInsuranceDetailPageModule)
-      },
-      {
         path: 'contracts',
         loadChildren: () => import('../pages/contracts/contracts.module').then( m => m.ContractsPageModule)
       },
