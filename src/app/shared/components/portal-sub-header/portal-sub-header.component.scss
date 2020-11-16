@@ -1,0 +1,26 @@
+:host {
+  .spacer {
+    flex: 1;
+  }
+
+  app-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  ::slotted(ion-icon) {
+    font-size: 1.5rem;
+  }
+
+  ::slotted(h1) {
+    margin: 0!important;
+    font-weight: bold!important;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem!important;
+    padding-left: 2rem;
+  }
+
+
+}

@@ -1,6 +1,6 @@
-<ion-tabs>
+<ion-tabs *ngIf="isMobile">
 
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" color="primary">
     <ion-tab-button tab="health-detail">
       <ion-icon name="triangle"></ion-icon>
       <ion-label>Health</ion-label>
@@ -9,3 +9,7 @@
   </ion-tab-bar>
 
 </ion-tabs>
+
+<ng-container *ngIf="!isMobile">
+  <ion-router-outlet [animated]="false"></ion-router-outlet>
+</ng-container>
