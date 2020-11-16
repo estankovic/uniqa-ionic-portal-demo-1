@@ -1,4 +1,6 @@
-<ion-header>
+<app-main-portal-header *ngIf="!isMobile"></app-main-portal-header>
+
+<ion-header *ngIf="isMobile">
   <ion-toolbar>
     <ion-title>health-insurance-detail</ion-title>
   </ion-toolbar>

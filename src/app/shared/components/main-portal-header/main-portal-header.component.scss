@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  height: 72px;
+  box-sizing: content-box;
+  border-bottom: 1px solid #D0D4DA;
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+
+    &__image {
+      height: 72px;
+      width: 75px;
+      background-color: #005CA9;
+    }
+
+    &__text {
+      color: #005CA9;
+      font-size: 32px;
+      margin-left: 2rem;
+      font-weight: bold;
+    }
+  }
+
+  .logout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-right: 2rem;
+
+    ion-icon {
+      margin-left: 1rem;
+    }
+  }
+}
