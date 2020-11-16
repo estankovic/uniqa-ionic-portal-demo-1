@@ -9,7 +9,7 @@ import {Platform} from '@ionic/angular';
 export class TabsPage {
 
   get isMobile() {
-    return this.platform.is('mobileweb');
+    return this.platform.is('mobileweb') || this.platform.is('mobile');
   }
 
   constructor(private readonly platform: Platform) {}

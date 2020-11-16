@@ -10,7 +10,7 @@ export class HealthInsuranceDetailPage implements OnInit {
 
 
   get isMobile() {
-    return this.platform.is('mobileweb');
+    return this.platform.is('mobileweb') || this.platform.is('mobile');
   }
 
   constructor(private readonly platform: Platform) { }
