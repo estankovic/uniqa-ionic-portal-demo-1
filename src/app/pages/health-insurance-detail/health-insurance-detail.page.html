@@ -1,4 +1,4 @@
-<app-header *ngIf="!isMobile">
+<app-header *ngIf="!(isMobile | async)">
   <app-main-portal-header></app-main-portal-header>
   <app-portal-sub-header>
     <ion-icon slot="start" name="arrow-back" (click)="navigateBack()"></ion-icon>
@@ -7,7 +7,7 @@
   </app-portal-sub-header>
 </app-header>
 
-<ion-header *ngIf="isMobile">
+<ion-header *ngIf="(isMobile | async)">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="navigateBack()">
@@ -20,7 +20,7 @@
 
 <ion-content>
 
-    <div class="insurance-header" [class.insurance-header--mobile]="isMobile">
+    <div class="insurance-header" [class.insurance-header--mobile]="(isMobile | async)">
         <ion-grid fixed>
             <div class="insurance-header__info">
                 <div class="insurance-header__info__item insurance-header__info__item--left">
@@ -48,11 +48,11 @@
                     </div>
                 </button>
             </div>
-            <div class="insurance-header__action" *ngIf="isMobile">
+            <div class="insurance-header__action" *ngIf="(isMobile | async)">
                 <ion-button color="secondary">Leistung einreichen</ion-button>
             </div>
             <div class="insurance-header__tabs">
-                <app-tab-switcher [condense]="!isMobile" #tabPanel>
+                <app-tab-switcher [condense]="!(isMobile | async)" #tabPanel>
                     <app-tab-switcher-label
                             label="Einreichungen"
                             [selected]="(tabPanel.currentIndex | async) === 0"

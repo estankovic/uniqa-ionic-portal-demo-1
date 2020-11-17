@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {PlatformService} from './shared/services/platform/platform.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
 
   get isMobile() {
-    return this.platform.is('mobileweb') || this.platform.is('mobile');
+    return this.platformService.isMobileSize;
   }
 
   constructor(
     private platform: Platform,
+    private platformService: PlatformService,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
@@ -27,6 +29,10 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+
+      this.platformService.init();
+
     });
   }
 }

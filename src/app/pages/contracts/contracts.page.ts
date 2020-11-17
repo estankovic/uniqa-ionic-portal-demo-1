@@ -1,7 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {ITabSwitcher} from '../../shared/components/tab-switcher/tab-switcher.interface';
+import {PlatformService} from '../../shared/services/platform/platform.service';
+import {tap} from 'rxjs/operators';
 
 interface Record {
   title: string;
@@ -17,6 +19,7 @@ interface Record {
   selector: 'app-contracts',
   templateUrl: './contracts.page.html',
   styleUrls: ['./contracts.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContractsPage implements OnInit {
 
@@ -37,12 +40,12 @@ export class ContractsPage implements OnInit {
 
 
   get isMobile() {
-    return this.platform.is('mobileweb') || this.platform.is('mobile');
+    return this.platformService.isMobileSize;
   }
 
   constructor(
-      private readonly platform: Platform,
-      private readonly router: Router
+      private readonly router: Router,
+      private readonly platformService: PlatformService
   ) { }
 
   ngOnInit() {
