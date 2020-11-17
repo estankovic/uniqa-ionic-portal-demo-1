@@ -1,0 +1,25 @@
+
+<div class="tabs">
+    <ng-template ngFor let-tab [ngForOf]="tabs">
+        <li
+                role="presentation"
+                [ngClass]="{'active': tab.selected}"
+        >
+            <a
+                    role="tab"
+                    class="p-tabview-nav-link"
+                    [attr.id]="tab.id + '-label'"
+                    [attr.aria-selected]="tab.selected"
+                    [attr.aria-controls]="tab.id"
+                    (click)="open($event, tab)"
+                    (keydown.enter)="open($event, tab)"
+                    [attr.tabindex]="'0'"
+            >
+                <span class="p-tabview-title">{{tab.label}}</span>
+            </a>
+        </li>
+    </ng-template>
+</div>
+<div class="content">
+    <ng-content></ng-content>
+</div>

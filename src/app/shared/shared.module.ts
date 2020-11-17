@@ -5,6 +5,8 @@ import {IonicModule} from '@ionic/angular';
 import {PortalSubHeaderComponent} from './components/portal-sub-header/portal-sub-header.component';
 import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
+import {TabComponent} from './components/tab/tab.component';
+import {TabGroupComponent} from './components/tab-group/tab-group.component';
 
 
 
@@ -13,7 +15,9 @@ import {HeaderComponent} from './components/header/header.component';
       MainPortalHeaderComponent,
       PortalSubHeaderComponent,
       ContentComponent,
-      HeaderComponent
+      HeaderComponent,
+      TabComponent,
+      TabGroupComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import {HeaderComponent} from './components/header/header.component';
       MainPortalHeaderComponent,
       PortalSubHeaderComponent,
       ContentComponent,
-      HeaderComponent
+      HeaderComponent,
+      TabComponent,
+      TabGroupComponent
   ]
 })
 export class SharedModule { }
