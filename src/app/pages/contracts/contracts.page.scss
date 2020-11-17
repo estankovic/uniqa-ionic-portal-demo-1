@@ -26,6 +26,7 @@ section {
   background-color: #FFFFFF;
   padding: 1rem;
 
+  margin-bottom: 1rem;
 
   &__header {
 
@@ -37,9 +38,12 @@ section {
       width: 40px;
       border-radius: 4px;
       background-color: #23A5AD;
+      flex-shrink: 0;
     }
 
     &__text {
+
+      flex: 1;
 
       display: flex;
       flex-direction: column;
@@ -50,6 +54,9 @@ section {
         font-family: 'Lato', sans-serif;
         font-size: 19px;
         font-weight: 900;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
       }
 
       &__sub-text {
@@ -61,6 +68,8 @@ section {
     &__action {
       display: flex;
       align-items: center;
+      cursor: pointer;
+      margin-left: 1rem;
 
       ion-icon {
         margin-left: .5rem;
