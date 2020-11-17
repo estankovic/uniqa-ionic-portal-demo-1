@@ -19,6 +19,57 @@
 </ion-header>
 
 <ion-content>
+
+    <div class="insurance-header" [class.insurance-header--mobile]="isMobile">
+        <ion-grid fixed>
+            <div class="insurance-header__info">
+                <div class="insurance-header__info__item insurance-header__info__item--left">
+                    <div class="insurance-header__info__item__title">Polizzennummer</div>
+                    <div class="insurance-header__info__item__value">1851/086303-0</div>
+                </div>
+                <div class="insurance-header__info__item insurance-header__info__item--right">
+                    <div class="insurance-header__info__item__title">Monatliche Kosten</div>
+                    <div class="insurance-header__info__item__value">64,23 Euro</div>
+                </div>
+            </div>
+            <div class="insurance-header__documents">
+                <button class="insurance-header__documents__button">
+                    <div class="insurance-header__documents__button__icon"></div>
+                    <div class="insurance-header__documents__button__text">
+                        <div class="insurance-header__documents__button__text__title">Leistungsübersicht</div>
+                        <div class="insurance-header__documents__button__text__description">Beinhaltet Geschäftsbedingungen (PDF, 56kB)</div>
+                    </div>
+                </button>
+                <button class="insurance-header__documents__button">
+                    <div class="insurance-header__documents__button__icon"></div>
+                    <div class="insurance-header__documents__button__text">
+                        <div class="insurance-header__documents__button__text__title">Polizze</div>
+                        <div class="insurance-header__documents__button__text__description">Aktuellstes Polizzendokument (PDF, 56kB)</div>
+                    </div>
+                </button>
+            </div>
+            <div class="insurance-header__action" *ngIf="isMobile">
+                <ion-button color="secondary">Leistung einreichen</ion-button>
+            </div>
+            <div class="insurance-header__tabs">
+                <app-tab-switcher [condense]="!isMobile">
+                    <app-tab-switcher-label
+                            label="Einreichungen"
+                            [selected]="true"
+                    ></app-tab-switcher-label>
+                    <app-tab-switcher-label
+                            label="Dokumente"
+                            [selected]="false"
+                    ></app-tab-switcher-label>
+                    <app-tab-switcher-label
+                            label="Vertragsdetails"
+                            [selected]="false"
+                    ></app-tab-switcher-label>
+                </app-tab-switcher>
+            </div>
+        </ion-grid>
+    </div>
+
     <ion-grid fixed>
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
@@ -34,8 +85,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
+
 
     </ion-grid>
 
