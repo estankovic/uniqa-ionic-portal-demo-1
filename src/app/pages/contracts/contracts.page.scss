@@ -85,6 +85,8 @@ section {
 
       align-items: center;
 
+      flex-wrap: wrap;
+
       &__title {
         color: var(--ion-color-primary);
         margin-right: 1rem;
@@ -94,8 +96,9 @@ section {
         font-size: .75rem;
         background-color: var(--ion-color-primary);
         color: white;
-        border-radius: 8px;
-        padding: 2px 4px;
+        border-radius: 16px;
+        padding: 4px 8px;
+        margin-top: 4px;
       }
 
       &__note {
@@ -105,4 +108,8 @@ section {
 
   }
 
+}
+
+.safe-area {
+  padding: 0rem 1rem;
 }

@@ -71,7 +71,6 @@ export class TabGroupComponent implements AfterContentInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log('tg', this.controller)
     if (this.controller) {
       this.controller.currentIndex.subscribe(index => {
         this.activeIndex = index;

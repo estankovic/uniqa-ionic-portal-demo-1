@@ -9,14 +9,19 @@
 
   <app-tab-switcher #panel>
     <app-tab-switcher-label
-            label="One"
+            label="Gesundheit"
             [selected]="(panel.currentIndex | async) === 0"
             (click)="panel.activateIndex(0)"
     ></app-tab-switcher-label>
     <app-tab-switcher-label
-            label="Two"
+            label="Absicherung"
             [selected]="(panel.currentIndex | async) === 1"
             (click)="panel.activateIndex(1)"
+    ></app-tab-switcher-label>
+    <app-tab-switcher-label
+            label="Vorsorge"
+            [selected]="(panel.currentIndex | async) === 2"
+            (click)="panel.activateIndex(2)"
     ></app-tab-switcher-label>
   </app-tab-switcher>
 
@@ -25,8 +30,6 @@
 <ion-content>
   <app-content [hasSideContent]="true" *ngIf="!isMobile">
     <div slot="main">
-
-
       <section>
         <div class="header">
           <h1>Blah</h1>
@@ -164,32 +167,36 @@
     </div>
   </app-content>
 
-  <app-content>
+  <app-content *ngIf="isMobile">
     <app-tab-group slot="main" [showTabs]="false" [controller]="tabController">
-      <app-tab label="One">
-        1
+      <app-tab label="Gesundheit" class="safe-area">
+        <section>
+          <div class="card">
+            <div class="card__header">
+              <div class="card__header__icon"></div>
+              <div class="card__header__text">
+                <div class="card__header__text__title">Privatz</div>
+                <div class="card__header__text__sub-text">01/004/413906</div>
+              </div>
+              <div class="spacer"></div>
+              <a (click)="openHealthContractDetail()" class="card__header__action">
+                <span>Vertrag</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+            <div class="card__content">
+              <div class="card__content__title">1 offene Einreichung</div>
+              <div class="card__content__item">
+                <div class="card__content__item__title">26.02.202 | Max Musterman • Apotheke</div>
+                <div class="card__content__item__badge">In Bearbeitung</div>
+                <div class="spacer"></div>
+              </div>
+            </div>
+          </div>
+        </section>
       </app-tab>
-      <app-tab label="Two">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
-      </app-tab>
+      <app-tab label="Absicherung"></app-tab>
+      <app-tab label="Vorsorge"></app-tab>
     </app-tab-group>
   </app-content>
 </ion-content>

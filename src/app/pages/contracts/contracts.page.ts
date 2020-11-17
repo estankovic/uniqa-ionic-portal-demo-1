@@ -8,7 +8,7 @@ import {ITabSwitcher} from '../../shared/components/tab-switcher/tab-switcher.in
   templateUrl: './contracts.page.html',
   styleUrls: ['./contracts.page.scss'],
 })
-export class ContractsPage implements OnInit, AfterViewInit {
+export class ContractsPage implements OnInit {
 
   @ViewChild('panel') tabController: ITabSwitcher;
 
@@ -27,9 +27,4 @@ export class ContractsPage implements OnInit, AfterViewInit {
   openHealthContractDetail() {
     this.router.navigate(['./health-detail']);
   }
-
-  ngAfterViewInit(): void {
-    console.log(this.tabController);
-  }
-
 }
