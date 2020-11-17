@@ -1,0 +1,15 @@
+:host(.condense) {
+  justify-content: flex-start;
+
+  ::ng-deep app-tab-switcher-label {
+    --margin-right: 2rem;
+  }
+}
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  overflow-x: auto;
+}

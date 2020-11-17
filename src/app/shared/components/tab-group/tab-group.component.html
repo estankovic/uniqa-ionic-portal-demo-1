@@ -1,27 +1,14 @@
+<app-tab-switcher #panel *ngIf="showTabs" [condense]="condense">
+    <app-tab-switcher-label
+        *ngFor="let t of tabs"
+        [label]="t.label"
+        [selected]="t.selected"
+        [hasBadge]="t.hasBadge"
+        (click)="open($event, t)"
+        (keydown.enter)="open($event, t)"
+    ></app-tab-switcher-label>
+</app-tab-switcher>
 
-<div class="tabs">
-    <ng-template ngFor let-tab [ngForOf]="tabs">
-        <div
-                class="tabs__item"
-                role="presentation"
-                [ngClass]="{'tabs__item--active': tab.selected}"
-        >
-            <a
-                    role="tab"
-                    class="tabs__item__link"
-                    [attr.id]="tab.id + '-label'"
-                    [attr.aria-selected]="tab.selected"
-                    [attr.aria-controls]="tab.id"
-                    (click)="open($event, tab)"
-                    (keydown.enter)="open($event, tab)"
-                    [attr.tabindex]="'0'"
-            >
-                <span class="tabs__item__link__title">{{tab.label}}</span>
-                <span *ngIf="tab.hasBadge" class="tabs__item__link__badge"></span>
-            </a>
-        </div>
-    </ng-template>
-</div>
 <div class="content">
     <ng-content></ng-content>
 </div>

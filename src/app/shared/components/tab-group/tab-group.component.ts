@@ -10,6 +10,7 @@ import {
   QueryList
 } from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
+import {ITabSwitcher} from '../tab-switcher/tab-switcher.interface';
 
 @Component({
   selector: 'app-tab-group',
@@ -33,6 +34,10 @@ export class TabGroupComponent implements AfterContentInit, AfterViewChecked {
 
   @HostBinding('class.condense')
   @Input() condense = false;
+
+  @Input() showTabs = true;
+
+  @Input() controller: ITabSwitcher;
 
   @Input() get activeIndex() {
     return this._activeIndex;
@@ -63,6 +68,12 @@ export class TabGroupComponent implements AfterContentInit, AfterViewChecked {
     this.tabPanels.changes.subscribe(() => {
       this.initTabs();
     });
+
+    if (this.controller) {
+      this.controller.currentIndex.subscribe(index => {
+        this.activeIndex = index;
+      });
+    }
   }
 
   ngAfterViewChecked() {

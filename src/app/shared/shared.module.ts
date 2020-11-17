@@ -7,6 +7,8 @@ import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
 import {TabComponent} from './components/tab/tab.component';
 import {TabGroupComponent} from './components/tab-group/tab-group.component';
+import {TabSwitcherLabelComponent} from './components/tab-switcher-label/tab-switcher-label.component';
+import {TabSwitcherComponent} from './components/tab-switcher/tab-switcher.component';
 
 
 
@@ -17,7 +19,9 @@ import {TabGroupComponent} from './components/tab-group/tab-group.component';
       ContentComponent,
       HeaderComponent,
       TabComponent,
-      TabGroupComponent
+      TabGroupComponent,
+      TabSwitcherLabelComponent,
+      TabSwitcherComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +33,9 @@ import {TabGroupComponent} from './components/tab-group/tab-group.component';
       ContentComponent,
       HeaderComponent,
       TabComponent,
-      TabGroupComponent
+      TabGroupComponent,
+      TabSwitcherLabelComponent,
+      TabSwitcherComponent
   ]
 })
 export class SharedModule { }

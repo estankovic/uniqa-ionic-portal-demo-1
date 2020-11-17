@@ -1,0 +1,11 @@
+<a
+        role="tab"
+        class="link"
+        [attr.id]="id + '-label'"
+        [attr.aria-selected]="selected"
+        [attr.aria-controls]="id"
+        [attr.tabindex]="'0'"
+>
+  <span class="title">{{label}}</span>
+  <span *ngIf="hasBadge" class="badge"></span>
+</a>
