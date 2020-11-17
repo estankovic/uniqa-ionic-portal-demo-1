@@ -1,0 +1,42 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow-x: auto;
+
+    &__item {
+      display: flex;
+
+      padding: 1rem 0;
+
+      box-sizing: border-box;
+
+      border-bottom: 2px solid transparent;
+
+      &--active {
+        border-bottom: 2px solid #005CA9;
+      }
+    }
+
+  }
+
+  .content {
+    flex: 1;
+  }
+}
+
+:host(.condense) {
+  .tabs {
+    justify-content: flex-start;
+
+    &__item {
+      margin-right: 2rem;
+    }
+  }
+}

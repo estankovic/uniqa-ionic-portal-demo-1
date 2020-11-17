@@ -1,13 +1,14 @@
 
 <div class="tabs">
     <ng-template ngFor let-tab [ngForOf]="tabs">
-        <li
+        <div
+                class="tabs__item"
                 role="presentation"
-                [ngClass]="{'active': tab.selected}"
+                [ngClass]="{'tabs__item--active': tab.selected}"
         >
             <a
                     role="tab"
-                    class="p-tabview-nav-link"
+                    class="tabs__item__link"
                     [attr.id]="tab.id + '-label'"
                     [attr.aria-selected]="tab.selected"
                     [attr.aria-controls]="tab.id"
@@ -15,9 +16,10 @@
                     (keydown.enter)="open($event, tab)"
                     [attr.tabindex]="'0'"
             >
-                <span class="p-tabview-title">{{tab.label}}</span>
+                <span class="tabs__item__link__title">{{tab.label}}</span>
+                <span *ngIf="tab.hasBadge" class="tabs__item__link__badge"></span>
             </a>
-        </li>
+        </div>
     </ng-template>
 </div>
 <div class="content">

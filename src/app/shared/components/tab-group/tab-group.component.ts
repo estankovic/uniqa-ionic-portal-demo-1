@@ -4,7 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
-  EventEmitter,
+  EventEmitter, HostBinding,
   Input,
   OnInit, Output,
   QueryList
@@ -31,6 +31,8 @@ export class TabGroupComponent implements AfterContentInit, AfterViewChecked {
 
   @Output() activeIndexChange: EventEmitter<number> = new EventEmitter();
 
+  @HostBinding('class.condense')
+  @Input() condense = false;
 
   @Input() get activeIndex() {
     return this._activeIndex;
