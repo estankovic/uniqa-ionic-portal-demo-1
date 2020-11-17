@@ -52,18 +52,21 @@
                 <ion-button color="secondary">Leistung einreichen</ion-button>
             </div>
             <div class="insurance-header__tabs">
-                <app-tab-switcher [condense]="!isMobile">
+                <app-tab-switcher [condense]="!isMobile" #tabPanel>
                     <app-tab-switcher-label
                             label="Einreichungen"
-                            [selected]="true"
+                            [selected]="(tabPanel.currentIndex | async) === 0"
+                            (click)="tabPanel.activateIndex(0)"
                     ></app-tab-switcher-label>
                     <app-tab-switcher-label
                             label="Dokumente"
-                            [selected]="false"
+                            [selected]="(tabPanel.currentIndex | async) === 1"
+                            (click)="tabPanel.activateIndex(1)"
                     ></app-tab-switcher-label>
                     <app-tab-switcher-label
                             label="Vertragsdetails"
-                            [selected]="false"
+                            [selected]="(tabPanel.currentIndex | async) === 2"
+                            (click)="tabPanel.activateIndex(2)"
                     ></app-tab-switcher-label>
                 </app-tab-switcher>
             </div>
@@ -71,22 +74,11 @@
     </div>
 
     <ion-grid fixed>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur, eligendi esse facere, facilis id illo inventore laudantium maiores odit optio pariatur quidem quis recusandae rem similique sit tenetur voluptatem!</p>
-
-
+        <app-tab-group [showTabs]="false" [controller]="tabController">
+            <app-tab>A</app-tab>
+            <app-tab>b</app-tab>
+            <app-tab>c</app-tab>
+        </app-tab-group>
     </ion-grid>
 
 </ion-content>
