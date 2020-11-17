@@ -68,16 +68,15 @@ export class TabGroupComponent implements AfterContentInit, AfterViewChecked {
     this.tabPanels.changes.subscribe(() => {
       this.initTabs();
     });
+  }
 
+  ngAfterViewChecked() {
+    console.log('tg', this.controller)
     if (this.controller) {
       this.controller.currentIndex.subscribe(index => {
         this.activeIndex = index;
       });
     }
-  }
-
-  ngAfterViewChecked() {
-
   }
 
   private initTabs() {

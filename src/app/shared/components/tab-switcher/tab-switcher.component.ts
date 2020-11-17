@@ -1,6 +1,6 @@
 import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import {ITabSwitcher} from './tab-switcher.interface';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-tab-switcher',
@@ -9,7 +9,7 @@ import {Observable, Subject} from 'rxjs';
 })
 export class TabSwitcherComponent implements ITabSwitcher {
 
-  currentIndexSubject = new Subject<number>();
+  currentIndexSubject = new BehaviorSubject<number>(0);
 
   currentIndex: Observable<number> = this.currentIndexSubject.asObservable();
 

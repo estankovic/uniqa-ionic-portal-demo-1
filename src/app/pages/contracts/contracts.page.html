@@ -6,10 +6,24 @@
   <ion-toolbar color="primary">
     <ion-title>Meine Verträge</ion-title>
   </ion-toolbar>
+
+  <app-tab-switcher #panel>
+    <app-tab-switcher-label
+            label="One"
+            [selected]="(panel.currentIndex | async) === 0"
+            (click)="panel.activateIndex(0)"
+    ></app-tab-switcher-label>
+    <app-tab-switcher-label
+            label="Two"
+            [selected]="(panel.currentIndex | async) === 1"
+            (click)="panel.activateIndex(1)"
+    ></app-tab-switcher-label>
+  </app-tab-switcher>
+
 </ion-header>
 
 <ion-content>
-  <app-content [hasSideContent]="true">
+  <app-content [hasSideContent]="true" *ngIf="!isMobile">
     <div slot="main">
 
 
@@ -148,5 +162,34 @@
     <div slot="side">
       ASIDE
     </div>
+  </app-content>
+
+  <app-content>
+    <app-tab-group slot="main" [showTabs]="false" [controller]="tabController">
+      <app-tab label="One">
+        1
+      </app-tab>
+      <app-tab label="Two">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis facere ipsum laboriosam minus pariatur sapiente velit vero. Architecto doloribus dolorum eum iste maiores nulla odit pariatur quaerat, quidem sequi. Voluptatum!</p>
+      </app-tab>
+    </app-tab-group>
   </app-content>
 </ion-content>
