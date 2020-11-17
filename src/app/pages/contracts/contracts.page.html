@@ -28,156 +28,163 @@
 </ion-header>
 
 <ion-content>
-  <app-content [hasSideContent]="true" *ngIf="!isMobile">
-    <div slot="main">
-      <section>
-        <div class="header">
-          <h1>Meine Gesundheit</h1>
-          <div class="spacer"></div>
-          <ion-button color="secondary">Leistung einreichen</ion-button>
-        </div>
-        <div class="card" *ngFor="let record of data">
-          <div class="card__header">
-            <div class="card__header__icon"></div>
-            <div class="card__header__text">
-              <div class="card__header__text__title">{{record.title}}</div>
-              <div class="card__header__text__sub-text">Polizzennr.: {{record.id}}</div>
-            </div>
+
+  <ion-grid fixed *ngIf="!isMobile">
+    <ion-row>
+      <ion-col size="9">
+        <section>
+          <div class="header">
+            <h1>Meine Gesundheit</h1>
             <div class="spacer"></div>
-            <a (click)="openHealthContractDetail()" class="card__header__action">
-              <span>Vertrag</span>
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
+            <ion-button color="secondary">Leistung einreichen</ion-button>
           </div>
-          <div class="card__content" *ngIf="record.items.length">
-            <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
-            <div class="card__content__item" *ngFor="let item of record.items">
-              <div class="card__content__item__title">{{item.title}}</div>
-              <div class="card__content__item__badge">{{item.label}}</div>
+          <div class="card" *ngFor="let record of data">
+            <div class="card__header">
+              <div class="card__header__icon"></div>
+              <div class="card__header__text">
+                <div class="card__header__text__title">{{record.title}}</div>
+                <div class="card__header__text__sub-text">Polizzennr.: {{record.id}}</div>
+              </div>
               <div class="spacer"></div>
-              <div class="card__content__item__note" *ngIf="item.details">Keine Details</div>
+              <a (click)="openHealthContractDetail()" class="card__header__action">
+                <span>Vertrag</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+            <div class="card__content" *ngIf="record.items.length">
+              <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
+              <div class="card__content__item" *ngFor="let item of record.items">
+                <div class="card__content__item__title">{{item.title}}</div>
+                <div class="card__content__item__badge">{{item.label}}</div>
+                <div class="spacer"></div>
+                <div class="card__content__item__note" *ngIf="item.details">Keine Details</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <div class="header">
-          <h1>Meine Absicherung</h1>
-          <div class="spacer"></div>
-          <ion-button color="secondary">Leistung einreichen</ion-button>
-        </div>
-        <div class="card" *ngFor="let record of data">
-          <div class="card__header">
-            <div class="card__header__icon"></div>
-            <div class="card__header__text">
-              <div class="card__header__text__title">{{record.title}}</div>
-              <div class="card__header__text__sub-text">Polizzennr.: {{record.id}}</div>
-            </div>
+        <section>
+          <div class="header">
+            <h1>Meine Absicherung</h1>
             <div class="spacer"></div>
-            <a (click)="openHealthContractDetail()" class="card__header__action">
-              <span>Vertrag</span>
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
+            <ion-button color="secondary">Leistung einreichen</ion-button>
           </div>
-          <div class="card__content" *ngIf="record.items.length">
-            <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
-            <div class="card__content__item" *ngFor="let item of record.items">
-              <div class="card__content__item__title">{{item.title}}</div>
-              <div class="card__content__item__badge">{{item.label}}</div>
+          <div class="card" *ngFor="let record of data">
+            <div class="card__header">
+              <div class="card__header__icon"></div>
+              <div class="card__header__text">
+                <div class="card__header__text__title">{{record.title}}</div>
+                <div class="card__header__text__sub-text">Polizzennr.: {{record.id}}</div>
+              </div>
               <div class="spacer"></div>
-              <div class="card__content__item__note" *ngIf="item.details">Keine Details</div>
+              <a (click)="openHealthContractDetail()" class="card__header__action">
+                <span>Vertrag</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+            <div class="card__content" *ngIf="record.items.length">
+              <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
+              <div class="card__content__item" *ngFor="let item of record.items">
+                <div class="card__content__item__title">{{item.title}}</div>
+                <div class="card__content__item__badge">{{item.label}}</div>
+                <div class="spacer"></div>
+                <div class="card__content__item__note" *ngIf="item.details">Keine Details</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </ion-col>
+      <!-- ASIDE SHOULD BE INCLUDED -->
+      <ion-col>
+        ASIDE
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <div slot="side">
-      ASIDE
-    </div>
-  </app-content>
 
-  <app-content *ngIf="isMobile">
-    <app-tab-group slot="main" [showTabs]="false" [controller]="tabController">
-      <app-tab label="Gesundheit" class="safe-area">
-        <section *ngFor="let i of [0, 0, 0]">
-          <div class="card" *ngFor="let record of data">
-            <div class="card__header">
-              <div class="card__header__icon"></div>
-              <div class="card__header__text">
-                <div class="card__header__text__title">{{record.title}}</div>
-                <div class="card__header__text__sub-text">{{record.id}}</div>
-              </div>
-              <div class="spacer"></div>
-              <a (click)="openHealthContractDetail()" class="card__header__action">
-                <span>Vertrag</span>
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="card__content" *ngIf="record.items.length">
-              <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
-              <div class="card__content__item" *ngFor="let item of record.items">
-                <div class="card__content__item__title">{{item.title}}</div>
-                <div class="card__content__item__badge">{{item.label}}</div>
+  <ion-grid fixed *ngIf="isMobile">
+    <ion-col>
+      <app-tab-group [showTabs]="false" [controller]="tabController">
+        <app-tab label="Gesundheit">
+          <section *ngFor="let i of [0, 0, 0]">
+            <div class="card" *ngFor="let record of data">
+              <div class="card__header">
+                <div class="card__header__icon"></div>
+                <div class="card__header__text">
+                  <div class="card__header__text__title">{{record.title}}</div>
+                  <div class="card__header__text__sub-text">{{record.id}}</div>
+                </div>
                 <div class="spacer"></div>
+                <a (click)="openHealthContractDetail()" class="card__header__action">
+                  <span>Vertrag</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+              </div>
+              <div class="card__content" *ngIf="record.items.length">
+                <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
+                <div class="card__content__item" *ngFor="let item of record.items">
+                  <div class="card__content__item__title">{{item.title}}</div>
+                  <div class="card__content__item__badge">{{item.label}}</div>
+                  <div class="spacer"></div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </app-tab>
-      <app-tab label="Absicherung" class="safe-area">
-        <section *ngFor="let i of [0]">
-          <div class="card" *ngFor="let record of data">
-            <div class="card__header">
-              <div class="card__header__icon"></div>
-              <div class="card__header__text">
-                <div class="card__header__text__title">{{record.title}}</div>
-                <div class="card__header__text__sub-text">{{record.id}}</div>
-              </div>
-              <div class="spacer"></div>
-              <a (click)="openHealthContractDetail()" class="card__header__action">
-                <span>Vertrag</span>
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="card__content" *ngIf="record.items.length">
-              <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
-              <div class="card__content__item" *ngFor="let item of record.items">
-                <div class="card__content__item__title">{{item.title}}</div>
-                <div class="card__content__item__badge">{{item.label}}</div>
+          </section>
+        </app-tab>
+        <app-tab label="Absicherung">
+          <section *ngFor="let i of [0]">
+            <div class="card" *ngFor="let record of data">
+              <div class="card__header">
+                <div class="card__header__icon"></div>
+                <div class="card__header__text">
+                  <div class="card__header__text__title">{{record.title}}</div>
+                  <div class="card__header__text__sub-text">{{record.id}}</div>
+                </div>
                 <div class="spacer"></div>
+                <a (click)="openHealthContractDetail()" class="card__header__action">
+                  <span>Vertrag</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+              </div>
+              <div class="card__content" *ngIf="record.items.length">
+                <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
+                <div class="card__content__item" *ngFor="let item of record.items">
+                  <div class="card__content__item__title">{{item.title}}</div>
+                  <div class="card__content__item__badge">{{item.label}}</div>
+                  <div class="spacer"></div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </app-tab>
-      <app-tab label="Vorsorge" class="safe-area">
-        <section *ngFor="let i of [0, 0]">
-          <div class="card" *ngFor="let record of data">
-            <div class="card__header">
-              <div class="card__header__icon"></div>
-              <div class="card__header__text">
-                <div class="card__header__text__title">{{record.title}}</div>
-                <div class="card__header__text__sub-text">{{record.id}}</div>
-              </div>
-              <div class="spacer"></div>
-              <a (click)="openHealthContractDetail()" class="card__header__action">
-                <span>Vertrag</span>
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="card__content" *ngIf="record.items.length">
-              <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
-              <div class="card__content__item" *ngFor="let item of record.items">
-                <div class="card__content__item__title">{{item.title}}</div>
-                <div class="card__content__item__badge">{{item.label}}</div>
+          </section>
+        </app-tab>
+        <app-tab label="Vorsorge">
+          <section *ngFor="let i of [0, 0]">
+            <div class="card" *ngFor="let record of data">
+              <div class="card__header">
+                <div class="card__header__icon"></div>
+                <div class="card__header__text">
+                  <div class="card__header__text__title">{{record.title}}</div>
+                  <div class="card__header__text__sub-text">{{record.id}}</div>
+                </div>
                 <div class="spacer"></div>
+                <a (click)="openHealthContractDetail()" class="card__header__action">
+                  <span>Vertrag</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+              </div>
+              <div class="card__content" *ngIf="record.items.length">
+                <div class="card__content__title">{{record.items.length}} offene Einreichung</div>
+                <div class="card__content__item" *ngFor="let item of record.items">
+                  <div class="card__content__item__title">{{item.title}}</div>
+                  <div class="card__content__item__badge">{{item.label}}</div>
+                  <div class="spacer"></div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </app-tab>
-    </app-tab-group>
-  </app-content>
+          </section>
+        </app-tab>
+      </app-tab-group>
+    </ion-col>
+
+  </ion-grid>
 </ion-content>

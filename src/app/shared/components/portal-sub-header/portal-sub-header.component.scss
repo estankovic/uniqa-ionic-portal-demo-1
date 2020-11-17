@@ -21,6 +21,9 @@
     font-size: 1.5rem!important;
     padding-left: 2rem;
   }
+}
 
-
+ion-grid {
+  --ion-grid-width-xl: var(--small-content-xl);
+  --ion-grid-width-lg: var(--small-content-lg);
 }
