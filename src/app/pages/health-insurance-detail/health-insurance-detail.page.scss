@@ -10,7 +10,7 @@ ion-content {
 
 .insurance-header {
   background: white;
-  border-bottom: 1px solid #D0D4DA;
+  padding-bottom: 1.5rem;
 
   ion-grid {
     padding-bottom: 0;
@@ -114,9 +114,18 @@ ion-content {
     justify-content: center;
     margin-top: 2rem;
   }
+}
 
-  &__tabs {
-    margin-top: 1.5rem;
+
+.tab-switcher-wrapper {
+  position: sticky;
+  top: 0;
+
+  background-color: white;
+  border-bottom: 1px solid #D0D4DA;
+
+  ion-grid {
+    padding: 0;
   }
 
 }
