@@ -40,7 +40,7 @@ export class ContractsPage implements OnInit {
 
 
   get isMobile() {
-    return this.platformService.isMobileSize;
+    return this.platformService.isMobileSize$;
   }
 
   constructor(

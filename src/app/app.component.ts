@@ -13,7 +13,7 @@ import {PlatformService} from './shared/services/platform/platform.service';
 export class AppComponent {
 
   get isMobile() {
-    return this.platformService.isMobileSize;
+    return this.platformService.isMobileSize$;
   }
 
   constructor(

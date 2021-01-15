@@ -10,10 +10,13 @@ export class PlatformService {
 
   private isMobileSizeSubject = new BehaviorSubject<boolean>(false);
 
-  isMobileSize = this.isMobileSizeSubject.asObservable().pipe(
+  isMobileSize$ = this.isMobileSizeSubject.asObservable().pipe(
       distinctUntilChanged()
-
   );
+
+  get isNative(): boolean {
+    return this.platform.is('hybrid');
+  }
 
   constructor(
       private readonly platform: Platform
@@ -36,6 +39,8 @@ export class PlatformService {
     const isRealMobileDevice = this.platform.is('mobile');
     const viewportWidth = this.platform.width();
     const isMobileWidth = (viewportWidth < 750);
+
+    console.log(this.platform.platforms());
 
     const isMobileSize = (isMobileAgent || isRealMobileDevice) || isMobileWidth;
 

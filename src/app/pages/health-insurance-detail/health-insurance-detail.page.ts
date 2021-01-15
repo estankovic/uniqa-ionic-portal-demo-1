@@ -13,7 +13,7 @@ export class HealthInsuranceDetailPage implements OnInit {
   @ViewChild('tabPanel', {static: false}) tabController: ITabSwitcher;
 
   get isMobile() {
-    return this.platformService.isMobileSize;
+    return this.platformService.isMobileSize$;
   }
 
   constructor(
