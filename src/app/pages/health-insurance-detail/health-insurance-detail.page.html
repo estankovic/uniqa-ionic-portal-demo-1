@@ -2,8 +2,8 @@
   <app-main-portal-header></app-main-portal-header>
   <app-portal-sub-header>
     <ion-icon slot="start" name="arrow-back" (click)="navigateBack()"></ion-icon>
-    <h1 slot="title">Krankenversicherung</h1>
-    <ion-button slot="end" color="secondary">Leistung einreichen</ion-button>
+    <h1 slot="title">{{contract.title}}</h1>
+    <ion-button slot="end" color="secondary">Raise Claim</ion-button>
   </app-portal-sub-header>
 </app-header>
 
@@ -14,7 +14,7 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Krankenversicherung</ion-title>
+    <ion-title>{{contract.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,32 +24,32 @@
         <ion-grid fixed>
             <div class="insurance-header__info">
                 <div class="insurance-header__info__item insurance-header__info__item--left">
-                    <div class="insurance-header__info__item__title">Polizzennummer</div>
-                    <div class="insurance-header__info__item__value">1851/086303-0</div>
+                    <div class="insurance-header__info__item__title">Policy no.</div>
+                    <div class="insurance-header__info__item__value">{{contract.policyNumber}}</div>
                 </div>
                 <div class="insurance-header__info__item insurance-header__info__item--right">
-                    <div class="insurance-header__info__item__title">Monatliche Kosten</div>
-                    <div class="insurance-header__info__item__value">64,23 Euro</div>
+                    <div class="insurance-header__info__item__title">Amount</div>
+                    <div class="insurance-header__info__item__value">{{contract.amount}} Euro</div>
                 </div>
             </div>
             <div class="insurance-header__documents">
                 <button class="insurance-header__documents__button">
                     <div class="insurance-header__documents__button__icon"></div>
                     <div class="insurance-header__documents__button__text">
-                        <div class="insurance-header__documents__button__text__title">Leistungsübersicht</div>
-                        <div class="insurance-header__documents__button__text__description">Beinhaltet Geschäftsbedingungen (PDF, 56kB)</div>
+                        <div class="insurance-header__documents__button__text__title">Overview</div>
+                        <div class="insurance-header__documents__button__text__description">Terms and Conditions (PDF, 56kB)</div>
                     </div>
                 </button>
                 <button class="insurance-header__documents__button">
                     <div class="insurance-header__documents__button__icon"></div>
                     <div class="insurance-header__documents__button__text">
-                        <div class="insurance-header__documents__button__text__title">Polizze</div>
-                        <div class="insurance-header__documents__button__text__description">Aktuellstes Polizzendokument (PDF, 56kB)</div>
+                        <div class="insurance-header__documents__button__text__title">Policy</div>
+                        <div class="insurance-header__documents__button__text__description">Latest Policy Document (PDF, 56kB)</div>
                     </div>
                 </button>
             </div>
             <div class="insurance-header__action" *ngIf="(isMobile | async)">
-                <ion-button color="secondary">Leistung einreichen</ion-button>
+                <ion-button color="secondary">Raise Claim</ion-button>
             </div>
             <div class="insurance-header__tabs">
 
@@ -61,17 +61,17 @@
         <ion-grid fixed>
             <app-tab-switcher [condense]="!(isMobile | async)" #tabPanel>
                 <app-tab-switcher-label
-                        label="Einreichungen"
+                        label="Claims"
                         [selected]="(tabPanel.currentIndex | async) === 0"
                         (click)="tabPanel.activateIndex(0)"
                 ></app-tab-switcher-label>
                 <app-tab-switcher-label
-                        label="Dokumente"
+                        label="Documents"
                         [selected]="(tabPanel.currentIndex | async) === 1"
                         (click)="tabPanel.activateIndex(1)"
                 ></app-tab-switcher-label>
                 <app-tab-switcher-label
-                        label="Vertragsdetails"
+                        label="Details"
                         [selected]="(tabPanel.currentIndex | async) === 2"
                         (click)="tabPanel.activateIndex(2)"
                 ></app-tab-switcher-label>

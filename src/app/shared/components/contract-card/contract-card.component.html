@@ -1,0 +1,21 @@
+<div class="card__header">
+  <div class="card__header__icon"></div>
+  <div class="card__header__text">
+    <div class="card__header__text__title">{{contract.title}}</div>
+    <div class="card__header__text__sub-text">Policy no.: {{contract.policyNumber}}</div>
+  </div>
+  <div class="spacer"></div>
+  <a (click)="openHealthContractDetail(contract)" class="card__header__action">
+    <span>Contract</span>
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </a>
+</div>
+<div class="card__content" *ngIf="contract.claims?.length">
+  <div class="card__content__title">{{contract.claims?.length}} opened claims</div>
+  <div class="card__content__item" *ngFor="let item of contract.claims">
+    <div class="card__content__item__title">{{item.title}}</div>
+    <div class="card__content__item__badge">{{item.status}}</div>
+    <div class="spacer"></div>
+    <div class="card__content__item__note" *ngIf="!item.details">No Details</div>
+  </div>
+</div>

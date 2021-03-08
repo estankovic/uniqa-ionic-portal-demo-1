@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ITabSwitcher} from '../../shared/components/tab-switcher/tab-switcher.interface';
 import {PlatformService} from '../../shared/services/platform/platform.service';
 import {tap} from 'rxjs/operators';
+import {getAllContracts} from '../../shared/data/all';
 
 interface Record {
   title: string;
@@ -25,19 +26,8 @@ export class ContractsPage implements OnInit {
 
   @ViewChild('panel') tabController: ITabSwitcher;
 
-
-  data: Record[] = [0, 1, 2, 3].map(v => ({
-    id: '01/004/413906',
-    title: 'Privatarzt',
-    items: !!(v % 3) ? [] : [
-      {
-        title: '26.02.202 | Max Musterman • Apotheke',
-        label: 'In Bearbeitung',
-        details: !!(v % 2)
-      }
-    ]
-  }));
-
+  healthContracts = getAllContracts('HEALTH');
+  carContracts = getAllContracts('CAR');
 
   get isMobile() {
     return this.platformService.isMobileSize$;
@@ -51,7 +41,7 @@ export class ContractsPage implements OnInit {
   ngOnInit() {
   }
 
-  openHealthContractDetail() {
-    this.router.navigate(['./health-detail']);
+  openHealthContractDetail(event: {id: string}) {
+    this.router.navigate(['./health-detail', event.id]);
   }
 }

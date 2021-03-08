@@ -9,6 +9,7 @@ import {TabComponent} from './components/tab/tab.component';
 import {TabGroupComponent} from './components/tab-group/tab-group.component';
 import {TabSwitcherLabelComponent} from './components/tab-switcher-label/tab-switcher-label.component';
 import {TabSwitcherComponent} from './components/tab-switcher/tab-switcher.component';
+import {ContractCardComponent} from './components/contract-card/contract-card.component';
 
 
 
@@ -21,7 +22,8 @@ import {TabSwitcherComponent} from './components/tab-switcher/tab-switcher.compo
       TabComponent,
       TabGroupComponent,
       TabSwitcherLabelComponent,
-      TabSwitcherComponent
+      TabSwitcherComponent,
+      ContractCardComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import {TabSwitcherComponent} from './components/tab-switcher/tab-switcher.compo
       TabComponent,
       TabGroupComponent,
       TabSwitcherLabelComponent,
-      TabSwitcherComponent
+      TabSwitcherComponent,
+      ContractCardComponent
   ]
 })
 export class SharedModule { }
