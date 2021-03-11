@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "ionic-portal",
+  "appId": "com.estankovic.ordinarica",
+  "appName": "Ordinarica - Ionic Demo App",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
