@@ -4,7 +4,7 @@
   <string name="title_activity_main">Ordinarica - Ionic Demo App</string>
   <string name="package_name">com.estankovic.ordinarica</string>
   <string name="custom_url_scheme">com.estankovic.ordinarica</string>
-  <string name="ionic_app_id">a91e3335</string>
+  <string name="ionic_app_id">117ac82b</string>
   <string name="ionic_channel_name">Production</string>
   <string name="ionic_update_method">background</string>
   <string name="ionic_max_versions">2</string>
