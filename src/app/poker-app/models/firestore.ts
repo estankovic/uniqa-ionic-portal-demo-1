@@ -23,10 +23,15 @@ export interface Round {
   [email: string]: number | null;
 }
 
-
+// DB
 // sessions/:sessionID/ (uid) (5 characters)
 // sessions/:sessionID/tasks/:taskID (uid) (firestore full id)
 // sessions/:sessionID/tasks/:taskID/rounds/:roundID (integer)
 
 
-
+// URL
+// domain.app/poker-app/welcome/
+// domain.app/poker-app/sessions/
+// domain.app/poker-app/sessions/:sessionID
+// domain.app/poker-app/sessions/history
+// domain.app/poker-app/sessions/history/:sessionID
