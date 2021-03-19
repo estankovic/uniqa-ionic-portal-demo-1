@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActionSheetController, AlertController} from '@ionic/angular';
+import {ActivatedRoute} from '@angular/router';
+import {FirebaseService} from '../../shared/services/firebase.service';
+import {debounceTime, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import {Session} from '../../models/firestore';
+import {Observable} from 'rxjs';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-sm-current-task',
@@ -8,10 +14,32 @@ import {ActionSheetController, AlertController} from '@ionic/angular';
 })
 export class SmCurrentTaskPage implements OnInit {
   taskName: string;
+  session$: Observable<Session> = this.activeRoute.params.pipe(
+      switchMap((params) => {
+        return this.firebaseService.getSingleSession(params.id);
+      }),
+      tap((session) => {
+        this.form.get('taskName').setValue(session.currentTask.label, {
+          emitEvent: false
+        });
+      })
+  );
+  form: FormGroup = new FormGroup({
+    taskName: new FormControl('')
+  });
 
-  constructor(private actionSheetController: ActionSheetController, private alertController: AlertController) { }
+  constructor(private actionSheetController: ActionSheetController,
+              private alertController: AlertController,
+              private activeRoute: ActivatedRoute,
+              private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    this.form.valueChanges.pipe(
+        debounceTime(1000),
+        withLatestFrom(this.session$)
+    ).subscribe(([form, session]) => {
+      this.onTaskNameChange(form.taskName, session);
+    });
   }
 
   async showEndAlert() {
@@ -91,7 +119,26 @@ export class SmCurrentTaskPage implements OnInit {
     await actionSheet.present();
   }
 
-  onTaskNameChange($event: any) {
-    console.log($event.detail.value);
+  onTaskNameChange(newName: string, session: Session) {
+    this.firebaseService.updateSession({
+      ...session,
+      currentTask: {
+        ...session.currentTask,
+        label: newName
+      }
+    });
+  }
+
+  async onVoteChange(voteValue: string, session: Session) {
+    const userEmail = await this.firebaseService.getStorageItem(FirebaseService.userEmail);
+    await this.firebaseService.updateSession({
+      ...session,
+      currentTask: {
+        ...session.currentTask,
+        currentRound: {
+          [userEmail]: voteValue,
+        }
+      }
+    });
   }
 }

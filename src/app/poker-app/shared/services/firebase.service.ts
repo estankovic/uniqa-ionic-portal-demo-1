@@ -12,6 +12,11 @@ export class FirebaseService {
 
   static userEmail = 'userEmail';
   static userName = 'username';
+  static emptyTask: Task = {
+    rounds: [],
+    currentRound: {},
+    label: 'New Task'
+  };
 
   constructor(private afs: AngularFirestore) {
   }
@@ -47,41 +52,41 @@ export class FirebaseService {
 
   async createNewTask(session: Session): Promise<void> {
     const nextTask = {...session.currentTask};
-    const newSession = {
+    const newSession: Session = {
       ...session,
       tasks: [...session.tasks, nextTask],
-      currentTask: {}
-    } as Session;
+      currentTask: FirebaseService.emptyTask
+    };
     await this.updateSession(newSession);
   }
 
   async closeVoting(session: Session): Promise<void> {
     const currentTask = {...session.currentTask};
     const currentRound = {...session.currentTask.currentRound};
-    const newTask = {
+    const newTask: Task = {
       ...currentTask,
       currentRound: {},
       rounds: [...currentTask.rounds, currentRound]
-    } as Task;
+    };
 
-    const newSession = {
+    const newSession: Session = {
       ...session,
       currentTask: newTask
-    } as Session;
+    };
     await this.updateSession(newSession);
   }
 
   async createNewSession(label: string): Promise<Session> {
     const id = this.afs.createId().substr(0, 5);
     const userEmail = await this.getStorageItem(FirebaseService.userEmail);
-    const tempSession = {
+    const tempSession: Session = {
       label,
       createdAt: new Date(),
       id,
-      currentTask: {},
+      currentTask: FirebaseService.emptyTask,
       tasks: [],
       ownerEmail: userEmail
-    } as Session;
+    };
     await this.afs.doc<Session>(`sessions/${id}`).set(tempSession);
     return tempSession;
   }

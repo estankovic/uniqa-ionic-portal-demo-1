@@ -1,19 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Current Task</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ng-container *ngIf="session$ | async as session">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{session.label}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content fullscreen="true" class="ion-padding">
-  <ion-button expand="block" (click)="showActions()">Show actions</ion-button>
-  <ion-item>
-    <ion-label position="floating">Task Name</ion-label>
-    <ion-input  (ionChange)="onTaskNameChange($event)"></ion-input>
-  </ion-item>
-  <div>
-    <app-voting-cards></app-voting-cards>
-  </div>
-</ion-content>
+  <ion-content fullscreen="true" class="ion-padding">
+    <ion-button expand="block" (click)="showActions()">Show actions</ion-button>
+    <ion-item [formGroup]="form">
+      <ion-label position="floating">Task Name</ion-label>
+      <ion-input formControlName="taskName"></ion-input>
+    </ion-item>
+    <div>
+      <app-voting-cards (voteChange)="onVoteChange($event, session)"></app-voting-cards>
+    </div>
+  </ion-content>
+</ng-container>

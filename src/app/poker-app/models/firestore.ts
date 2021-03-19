@@ -16,11 +16,12 @@ export interface Session {
 export interface Task {
   currentRound: Round;
   rounds: Round[];
+  label: string;
   finalResult?: number;
 }
 
 export interface Round {
-  [email: string]: number | null;
+  [email: string]: string | null;
 }
 
 // DB
