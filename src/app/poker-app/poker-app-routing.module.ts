@@ -4,7 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/session-list/session-list-routing.module').then(m => m.SessionListPageRoutingModule),
+    loadChildren: () => import('./pages/session-list/session-list.module').then(m => m.SessionListPageModule),
+  },
+  {
+    path: 'sm-current-task',
+    loadChildren: () => import('./pages/sm-current-task/sm-current-task.module').then( m => m.SmCurrentTaskPageModule)
   }
 ];
 

@@ -1,9 +1,25 @@
-<ion-header>
+<ion-header style="visibility: hidden">
   <ion-toolbar>
-    <ion-title>session-list</ion-title>
+      <ion-title>Sessions</ion-title>
+      <ion-buttons slot="end">
+          <ion-button (click)="onCreateSessionButtonClick()">Create session</ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen="true" class="ion-padding">
+    <div class="sessions-toolbar">
+      <h1>Sessoins</h1>
+      <ion-button (click)="onCreateSessionButtonClick()">Create session</ion-button>
+    </div>
+    <ion-item lines="none">
+        <ion-label>Show old</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-list>
+        <ion-list-header>All sessions</ion-list-header>
+        <ion-item *ngFor="let session of sessions">
+          <ion-label>{{session.label}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

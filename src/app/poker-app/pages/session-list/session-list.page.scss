@@ -1,0 +1,12 @@
+.sessions-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  h1 {
+    font-weight: 800;
+    font-size: 2em;
+    margin: 0;
+  }
+}

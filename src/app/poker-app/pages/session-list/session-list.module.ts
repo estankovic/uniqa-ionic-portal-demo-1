@@ -13,7 +13,7 @@ import { SessionListPage } from './session-list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SessionListPageRoutingModule
+    SessionListPageRoutingModule,
   ],
   declarations: [SessionListPage]
 })
