@@ -14,6 +14,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class SmCurrentTaskPage implements OnInit {
   taskName: string;
+  userEmail: string;
   session$: Observable<Session> = this.activeRoute.params.pipe(
       switchMap((params) => {
         return this.firebaseService.getSingleSession(params.id);
@@ -34,6 +35,9 @@ export class SmCurrentTaskPage implements OnInit {
               private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    this.firebaseService.getStorageItem(FirebaseService.userEmail).then(user => {
+      this.userEmail = user;
+    });
     this.form.valueChanges.pipe(
         debounceTime(1000),
         withLatestFrom(this.session$)

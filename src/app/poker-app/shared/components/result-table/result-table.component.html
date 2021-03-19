@@ -4,7 +4,7 @@
   </tr>
 
   <tr *ngFor="let user of tableData">
-    <td>{{user.username}}</td>
-    <td *ngFor="let r of user.rounds">{{r}}</td>
+    <td class="ion-text-start">{{user.username}}</td>
+    <td class="ion-text-center" *ngFor="let r of user.rounds">{{r}}</td>
   </tr>
 </table>

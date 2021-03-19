@@ -3,6 +3,7 @@ import {Session} from '../../models/firestore';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {FirebaseService} from '../../shared/services/firebase.service';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-session-list',
@@ -11,13 +12,15 @@ import {FirebaseService} from '../../shared/services/firebase.service';
 })
 export class SessionListPage implements OnInit {
 
-    sessions: Session[] = [];
+    sessions$: Observable<Session[]>;
 
-    constructor(private alertController: AlertController, private router: Router, private firebaseService: FirebaseService) {
+    constructor(private alertController: AlertController,
+                private router: Router,
+                private firebaseService: FirebaseService) {
     }
 
     ngOnInit() {
-       this.firebaseService.getAllSessions().subscribe();
+       this.sessions$ = this.firebaseService.getAllSessions();
     }
 
     async onCreateSessionButtonClick() {

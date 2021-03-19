@@ -9,7 +9,7 @@
   </ion-header>
 
   <ion-content fullscreen="true" class="ion-padding">
-    <ion-button expand="block" (click)="showActions()">Show actions</ion-button>
+    <ion-button *ngIf="session.ownerEmail == userEmail" expand="block" (click)="showActions()">Show actions</ion-button>
     <ion-item [formGroup]="form">
       <ion-label position="floating">Task Name</ion-label>
       <ion-input formControlName="taskName"></ion-input>
@@ -17,5 +17,6 @@
     <div>
       <app-voting-cards (voteChange)="onVoteChange($event, session)"></app-voting-cards>
     </div>
+    <app-result-table [activeRound]="session.currentTask.currentRound" [pastRounds]="session.currentTask.rounds"></app-result-table>
   </ion-content>
 </ng-container>

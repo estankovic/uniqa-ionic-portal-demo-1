@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {Round, Session, Task, User} from '../../models/firestore';
+import {Session, Task, User} from '../../models/firestore';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
@@ -105,6 +105,7 @@ export class FirebaseService {
   async createNewUser(user: User): Promise<User> {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.email}`);
     await userRef.set(user);
+    await this.setUser(user);
     return user;
   }
 
