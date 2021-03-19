@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/session-list/session-list-routing.module').then(m => m.SessionListPageRoutingModule),
+  },
+  {
+    path: 'sm-current-task',
+    loadChildren: () => import('./pages/sm-current-task/sm-current-task.module').then( m => m.SmCurrentTaskPageModule)
   }
 ];
 
