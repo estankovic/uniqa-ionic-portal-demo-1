@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/session-list/session-list.module').then(m => m.SessionListPageModule),
   },
   {
-    path: 'sm-current-task',
+    path: 'session/:id',
     loadChildren: () => import('./pages/sm-current-task/sm-current-task.module').then( m => m.SmCurrentTaskPageModule)
   }
 ];

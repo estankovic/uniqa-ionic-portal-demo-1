@@ -6,7 +6,7 @@ export interface User {
 export interface Session {
   id?: string; // first 6 chars of random uid
   label: string;
-  ownerEmail: string;
+  ownerEmail?: string;
   createdAt?: Date;
   closedAt?: Date | null; // if null => active, if date => inactive
   currentTask?: Task;
@@ -16,11 +16,12 @@ export interface Session {
 export interface Task {
   currentRound: Round;
   rounds: Round[];
+  label: string;
   finalResult?: number;
 }
 
 export interface Round {
-  [email: string]: number | null;
+  [email: string]: string | null;
 }
 
 // DB
