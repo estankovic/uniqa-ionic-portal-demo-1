@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {Session, Task, User} from '../../models/firestore';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  constructor(private afs: AngularFirestore) { }
+  static userEmail = 'userEmail';
+  static userName = 'username';
+
+  constructor(private afs: AngularFirestore) {
+  }
 
   getAllSessions(): Observable<Session[]> {
     return this.afs.collection<Session>('sessions').valueChanges();
@@ -20,6 +26,23 @@ export class FirebaseService {
 
   updateSession(session: Session): Promise<void> {
     return this.afs.doc<Session>(`sessions/${session.id}`).set(session, { merge: true });
+  }
+
+  async setUser(user: User): Promise<void> {
+    console.log(user);
+    await Storage.set({
+      key: 'username',
+      value: user.name
+    });
+    await Storage.set({
+      key: 'userEmail',
+      value: user.email
+    });
+  }
+
+  async getStorageItem(key: string) {
+    const { value } = await Storage.get({ key });
+    return value;
   }
 
   async createNewTask(session: Session): Promise<void> {
@@ -48,14 +71,16 @@ export class FirebaseService {
     await this.updateSession(newSession);
   }
 
-  async createNewSession(session: Session): Promise<Session> {
+  async createNewSession(label: string): Promise<Session> {
     const id = this.afs.createId().substr(0, 5);
+    const userEmail = await this.getStorageItem(FirebaseService.userEmail);
     const tempSession = {
-      ...session,
+      label,
       createdAt: new Date(),
       id,
       currentTask: {},
-      tasks: []
+      tasks: [],
+      ownerEmail: userEmail
     } as Session;
     await this.afs.doc<Session>(`sessions/${id}`).set(tempSession);
     return tempSession;

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {Session} from '../../models/firestore';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {FirebaseService} from '../../shared/services/firebase.service';
 
 @Component({
     selector: 'app-session-list',
@@ -13,14 +13,11 @@ export class SessionListPage implements OnInit {
 
     sessions: Session[] = [];
 
-    constructor(private firestore: AngularFirestore, private alertController: AlertController, private router: Router) {
+    constructor(private alertController: AlertController, private router: Router, private firebaseService: FirebaseService) {
     }
 
     ngOnInit() {
-        this.firestore.collection<Session>('sessions').valueChanges().subscribe((res) => {
-            console.log(res);
-            this.sessions = res;
-        });
+       this.firebaseService.getAllSessions().subscribe();
     }
 
     async onCreateSessionButtonClick() {
@@ -43,9 +40,10 @@ export class SessionListPage implements OnInit {
                     }
                 }, {
                     text: 'Ok',
-                    handler: () => {
-                        this.router.navigate(['poker-app/sm-current-task']);
-                        console.log('Confirm Ok');
+                    handler: ({sessionName}) => {
+                        this.firebaseService.createNewSession(sessionName).then((session) => {
+                            this.router.navigate(['poker-app/session', session.id]);
+                        });
                     }
                 }
             ]
