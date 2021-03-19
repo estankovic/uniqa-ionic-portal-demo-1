@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <td *ngFor="let l of tableLabels">{{l}}</td>
+  </tr>
+
+  <tr *ngFor="let user of tableData">
+    <td>{{user.username}}</td>
+    <td *ngFor="let r of user.rounds">{{r}}</td>
+  </tr>
+</table>
