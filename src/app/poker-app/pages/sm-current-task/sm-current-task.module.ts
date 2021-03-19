@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SmCurrentTaskPageRoutingModule } from './sm-current-task-routing.module';
 
 import { SmCurrentTaskPage } from './sm-current-task.page';
-import {SharedModule} from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [

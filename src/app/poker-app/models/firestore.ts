@@ -4,10 +4,10 @@ export interface User {
 }
 
 export interface Session {
-  id: string; // first 6 chars of random uid
+  id?: string; // first 6 chars of random uid
   label: string;
   ownerEmail: string;
-  createdAt: Date;
+  createdAt?: Date;
   closedAt?: Date | null; // if null => active, if date => inactive
   currentTask?: Task;
   tasks?: Task[];
