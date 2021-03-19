@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {Session, Task, User} from '../../models/firestore';
+import {Round, Session, Task, User} from '../../models/firestore';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
@@ -31,6 +31,17 @@ export class FirebaseService {
 
   updateSession(session: Session): Promise<void> {
     return this.afs.doc<Session>(`sessions/${session.id}`).set(session, { merge: true });
+  }
+
+  async updateVote(sessionId: string, vote: string): Promise<void> {
+    const userEmail = await this.getStorageItem(FirebaseService.userEmail);
+    return this.afs.doc<Partial<Session>>(`sessions/${sessionId}`).set({
+      currentTask: {
+        currentRound: {
+          [userEmail]: vote,
+        }
+      } as any
+    }, { merge: true });
   }
 
   async setUser(user: User): Promise<void> {

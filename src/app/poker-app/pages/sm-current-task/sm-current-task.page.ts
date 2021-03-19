@@ -130,15 +130,6 @@ export class SmCurrentTaskPage implements OnInit {
   }
 
   async onVoteChange(voteValue: string, session: Session) {
-    const userEmail = await this.firebaseService.getStorageItem(FirebaseService.userEmail);
-    await this.firebaseService.updateSession({
-      ...session,
-      currentTask: {
-        ...session.currentTask,
-        currentRound: {
-          [userEmail]: voteValue,
-        }
-      }
-    });
+    await this.firebaseService.updateVote(session.id, voteValue);
   }
 }
