@@ -19,6 +19,10 @@ export class ResultTableComponent implements OnInit, OnChanges {
     return ['Name', ...(this.tableData[0]?.rounds.map((v, i) => `Round ${i}`) || [])];
   }
 
+  get hasActiveRoundColumn() {
+    return !!this.activeRound;
+  }
+
   constructor() {
   }
 
