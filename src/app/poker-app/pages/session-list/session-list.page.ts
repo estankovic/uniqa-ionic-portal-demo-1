@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Session} from '../../models/firestore';
 import {AlertController} from '@ionic/angular';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-session-list',
@@ -25,7 +25,7 @@ export class SessionListPage implements OnInit {
 
     async onCreateSessionButtonClick() {
         const alert = await this.alertController.create({
-            header: 'Pleasy type name of session',
+            header: 'Please type name of session',
             inputs: [
                 {
                     name: 'sessionName',
@@ -44,7 +44,7 @@ export class SessionListPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: () => {
-                        this.router.navigate(['/sm-current-task']);
+                        this.router.navigate(['poker-app/sm-current-task']);
                         console.log('Confirm Ok');
                     }
                 }
