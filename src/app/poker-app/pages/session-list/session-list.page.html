@@ -14,11 +14,8 @@
         <ion-item [ngClass]="{
             'closed-session': session.closedAt
           }" *ngFor="let session of sessions" [routerLink]="session.closedAt ? ['/poker-app/session-history', session.id] : ['/poker-app/session', session.id]">
-         <ion-icon [ngClass]="{
-            'closed-session': session.closedAt,
-            'open-session': !session.closedAt
-          }" size="small" class="ion-margin-end" name="reader-outline"></ion-icon>
-          <ion-label>{{session.label}}</ion-label>
+            <ion-icon size="small" class="ion-margin-end" name="reader-outline"></ion-icon>
+            <ion-label>{{session.label}}</ion-label>
             <ion-label slot="end">
                 ({{session.id}})
             </ion-label>
