@@ -12,7 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
+    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule),
+  },
+  {
+    path: 'session-history/:id',
+    loadChildren: () => import('./pages/session-history/session-history.module').then( m => m.SessionHistoryPageModule)
   }
 ];
 

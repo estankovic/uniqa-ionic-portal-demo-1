@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>session-history</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="session$ | async as session">
+  <div *ngFor="let task of session.tasks">
+    <div class="tasks-header">
+      <h3>{{task.label}}</h3>
+      <h3>Result: {{task.finalResult}}</h3>
+    </div>
+    <app-result-table [pastRounds]="session.currentTask.rounds"></app-result-table>
+  </div>
+</ion-content>

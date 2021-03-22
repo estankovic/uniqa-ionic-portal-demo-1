@@ -44,14 +44,20 @@ export class SessionListPage implements OnInit {
                 }, {
                     text: 'Ok',
                     handler: ({sessionName}) => {
-                        this.firebaseService.createNewSession(sessionName).then((session) => {
-                            this.router.navigate(['poker-app/session', session.id]);
-                        });
+                        if (sessionName) {
+                            this.firebaseService.createNewSession(sessionName).then((session) => {
+                                this.router.navigate(['poker-app/session', session.id]);
+                            });
+                        }
                     }
                 }
             ]
         });
 
         await alert.present();
+    }
+
+    onShowOldChange(checked: boolean) {
+        console.log(checked);
     }
 }

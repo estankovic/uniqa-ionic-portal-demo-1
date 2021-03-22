@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActionSheetController, AlertController} from '@ionic/angular';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../../shared/services/firebase.service';
 import {debounceTime, switchMap, tap, withLatestFrom} from 'rxjs/operators';
 import {Session} from '../../models/firestore';
@@ -23,6 +23,12 @@ export class SmCurrentTaskPage implements OnInit {
         this.form.get('taskName').setValue(session.currentTask.label, {
           emitEvent: false
         });
+      }),
+      tap((session) => {
+        if (session.closedAt) {
+          // TODO: change link
+          this.router.navigate(['poker-app']);
+        }
       })
   );
   form: FormGroup = new FormGroup({
@@ -32,6 +38,7 @@ export class SmCurrentTaskPage implements OnInit {
   constructor(private actionSheetController: ActionSheetController,
               private alertController: AlertController,
               private activeRoute: ActivatedRoute,
+              private router: Router,
               private firebaseService: FirebaseService) { }
 
   ngOnInit() {
@@ -46,7 +53,7 @@ export class SmCurrentTaskPage implements OnInit {
     });
   }
 
-  async showEndAlert() {
+  async showEndAlert(session: Session) {
     const alert = await this.alertController.create({
       header: 'What was the final result',
       inputs: [
@@ -66,8 +73,15 @@ export class SmCurrentTaskPage implements OnInit {
           }
         }, {
           text: 'Confirm',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: (finalResult) => {
+            const tempSession = {
+              ...session,
+              currentTask: {
+                ...session.currentTask,
+                finalResult
+              }
+            } as Session;
+            this.firebaseService.createNewTask(tempSession);
           }
         }
       ]
@@ -76,7 +90,7 @@ export class SmCurrentTaskPage implements OnInit {
     await alert.present();
   }
 
-  async showActions() {
+  async showActions(session: Session) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Actions',
       buttons: [{
@@ -84,32 +98,26 @@ export class SmCurrentTaskPage implements OnInit {
         role: 'destructive',
         icon: 'lock-closed',
         handler: () => {
-          console.log('Close clicked');
+          this.firebaseService.closeSession(session.id);
         }
       }, {
         text: 'Close voting round',
         role: 'destructive',
         icon: 'time',
         handler: () => {
-          console.log('Close voting clicked');
+          this.firebaseService.closeVoting(session);
         }
       }, {
         text: 'Clear users',
         icon: 'people',
         handler: () => {
-          console.log('Clear users clicked');
-        }
-      }, {
-        text: 'Start voting',
-        icon: 'hourglass',
-        handler: () => {
-          console.log('Start voting clicked');
+          this.firebaseService.clearSessionUsers(session.id);
         }
       }, {
         text: 'New task',
         icon: 'add',
         handler: () => {
-          this.showEndAlert();
+          this.showEndAlert(session);
         }
       }, {
         text: 'Cancel',

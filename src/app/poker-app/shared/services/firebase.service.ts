@@ -22,7 +22,9 @@ export class FirebaseService {
   }
 
   getAllSessions(): Observable<Session[]> {
-    return this.afs.collection<Session>('sessions').valueChanges();
+    return this.afs.collection<Session>('sessions', ref => {
+      return ref.orderBy('createdAt', 'desc');
+    }).valueChanges();
   }
 
   getSingleSession(sessionId: string): Observable<Session> {
@@ -56,7 +58,7 @@ export class FirebaseService {
     });
   }
 
-  async getStorageItem(key: string) {
+  async getStorageItem(key: string): Promise<string> {
     const { value } = await Storage.get({ key });
     return value;
   }
@@ -87,6 +89,16 @@ export class FirebaseService {
     await this.updateSession(newSession);
   }
 
+  async closeSession(sessionId: string): Promise<void> {
+    await this.afs.doc(`sessions/${sessionId}`).set({ closedAt: new Date() }, { merge: true });
+  }
+
+  async clearSessionUsers(sessionId: string): Promise<void> {
+    await this.afs.doc(`sessions/${sessionId}`).set({
+      currentTask: FirebaseService.emptyTask
+    }, {merge: true});
+  }
+
   async createNewSession(label: string): Promise<Session> {
     const id = this.afs.createId().substr(0, 5);
     const userEmail = await this.getStorageItem(FirebaseService.userEmail);
@@ -108,11 +120,4 @@ export class FirebaseService {
     await this.setUser(user);
     return user;
   }
-
-  // getAllInactiveSessions(): Observable<Session[]> {
-  //   return this.afs.collection<Session>('sessions', ref => {
-  //     return ref.where('closedAt', '!=', null)
-  //         .where('label', '==', 'email');
-  //   }).valueChanges();
-  // }
 }
