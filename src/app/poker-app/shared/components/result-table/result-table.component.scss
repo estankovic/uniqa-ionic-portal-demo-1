@@ -4,7 +4,7 @@
 
   overflow: auto;
 
-  --sticky-bg-color: #efefef;
+  --sticky-bg-color: --ion-item-background;
 
   font-size: .75rem;
 
@@ -49,6 +49,7 @@
         position: sticky;
         top: 0;
         z-index: 1;
+        text-align: start;
 
         &:first-child {
           position: sticky;
@@ -61,7 +62,7 @@
 
     tbody {
       th {
-        font-weight: 700;
+        font-weight: 400;
         font-style: italic;
         text-align: left;
 

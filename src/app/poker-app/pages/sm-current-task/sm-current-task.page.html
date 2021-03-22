@@ -11,20 +11,24 @@
   <ion-content fullscreen="true" class="ion-padding">
 
     <ng-container *ngIf="isOwner$ | async; else defaultName">
-      <ion-button expand="block" (click)="showActions(session)">Show actions</ion-button>
-      <ion-item [formGroup]="form">
-        <ion-label position="floating">Task Name</ion-label>
-        <ion-input formControlName="taskName"></ion-input>
-      </ion-item>
+      <ion-card class="admin-card">
+        <ion-button class="ion-margin-bottom" expand="block" (click)="showActions(session)">Show actions</ion-button>
+        <ion-item [formGroup]="form">
+          <ion-label position="floating">Task Name</ion-label>
+          <ion-input formControlName="taskName"></ion-input>
+        </ion-item>
+      </ion-card>
     </ng-container>
 
     <ng-template #defaultName>
       <h3>{{session.currentTask.label}}</h3>
     </ng-template>
 
-    <div>
+    <ion-card>
       <app-voting-cards (voteChange)="onVoteChange($event, session)"></app-voting-cards>
-    </div>
-    <app-result-table [activeRound]="session.currentTask.currentRound" [pastRounds]="session.currentTask.rounds"></app-result-table>
+    </ion-card>
+    <ion-card class="ion-padding">
+      <app-result-table [activeRound]="session.currentTask.currentRound" [pastRounds]="session.currentTask.rounds"></app-result-table>
+    </ion-card>
   </ion-content>
 </ng-container>

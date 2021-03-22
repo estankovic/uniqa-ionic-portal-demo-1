@@ -3,16 +3,25 @@
       <h1>Sessions</h1>
       <ion-button (click)="onCreateSessionButtonClick()">Create session</ion-button>
     </div>
-    <ion-item lines="none">
-        <ion-label>Show old</ion-label>
-        <ion-checkbox (ionChange)="onShowOldChange($event.detail.checked)" slot="start"></ion-checkbox>
-    </ion-item>
-    <ion-list *ngIf="sessions$ | async as sessions">
-        <ion-list-header>All sessions</ion-list-header>
-        <ion-item *ngFor="let session of sessions">
-          <ion-label [ngClass]="{
+<!--    <ion-item lines="none" class="ion-margin-bottom ion-margin-top">-->
+<!--        <ion-label>Show old</ion-label>-->
+<!--        <ion-checkbox (ionChange)="onShowOldChange($event.detail.checked)" slot="start"></ion-checkbox>-->
+<!--    </ion-item>-->
+    <ion-list class="ion-margin-top" *ngIf="sessions$ | async as sessions">
+        <ion-list-header>
+            <h2>All sessions</h2>
+        </ion-list-header>
+        <ion-item [ngClass]="{
             'closed-session': session.closedAt
-          }" [routerLink]="session.closedAt ? ['/poker-app/session-history', session.id] : ['/poker-app/session', session.id]">{{session.label}}</ion-label>
+          }" *ngFor="let session of sessions" [routerLink]="session.closedAt ? ['/poker-app/session-history', session.id] : ['/poker-app/session', session.id]">
+         <ion-icon [ngClass]="{
+            'closed-session': session.closedAt,
+            'open-session': !session.closedAt
+          }" size="small" class="ion-margin-end" name="reader-outline"></ion-icon>
+          <ion-label>{{session.label}}</ion-label>
+            <ion-label slot="end">
+                ({{session.id}})
+            </ion-label>
         </ion-item>
     </ion-list>
 </ion-content>

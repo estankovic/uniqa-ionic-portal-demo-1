@@ -4,15 +4,15 @@
             <h1>Welcome in Scrum Poker</h1>
         </ion-text>
         <form [formGroup]="loginForm">
-            <ion-item class="ion-text-center">
+            <ion-item>
                 <ion-label>Email:</ion-label>
-                <ion-input formControlName="email"></ion-input>
+                <ion-input type="email" formControlName="email" placeholder="email@uniqa.at"></ion-input>
             </ion-item>
-            <ion-item class="ion-text-center">
+            <ion-item>
                 <ion-label>Name:</ion-label>
                 <ion-input formControlName="name"></ion-input>
             </ion-item>
         </form>
-        <ion-button class="btn" color="success" [disabled]="!loginForm.valid" (click)="submit()">Enter</ion-button>
+        <ion-button class="btn" color="primary" [disabled]="!loginForm.valid" (click)="submit()">Enter</ion-button>
     </div>
 </ion-content>
