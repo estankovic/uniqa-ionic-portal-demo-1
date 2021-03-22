@@ -12,10 +12,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/contracts/contracts.module').then( m => m.ContractsPageModule)
       },
       {
-        path: 'contact',
-        loadChildren: () => import('../pages/contact/contact.module').then( m => m.ContactPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/contracts',
         pathMatch: 'full'
