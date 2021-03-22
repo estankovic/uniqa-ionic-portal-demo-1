@@ -1,15 +1,18 @@
-<ion-header>
+<ion-header *ngIf="session$ | async as session">
   <ion-toolbar>
-    <ion-title>session-history</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/poker-app"></ion-back-button>
+    </ion-buttons>
+    <ion-title>History of {{session.label}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="session$ | async as session">
-  <div *ngFor="let task of session.tasks">
+<ion-content class="ion-padding" *ngIf="session$ | async as session">
+  <ion-card class="ion-padding" *ngFor="let task of session.tasks">
     <div class="tasks-header">
-      <h3>{{task.label}}</h3>
-      <h3>Result: {{task.finalResult}}</h3>
+      <h4>{{task.label}}</h4>
+      <h4>Result: {{task.finalResult}}</h4>
     </div>
     <app-result-table [pastRounds]="task.rounds"></app-result-table>
-  </div>
+  </ion-card>
 </ion-content>

@@ -65,6 +65,28 @@ export class SmCurrentTaskPage implements OnInit {
     });
   }
 
+  async showEndSessionAlert(session: Session) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Close session',
+      message: 'Are you sure to close session? Current task will not be saved.',
+      buttons: [
+        {
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'OK',
+        role: 'confirm',
+        handler: () => {
+          this.firebaseService.closeSession(session.id);
+        }
+      }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async showEndAlert(session: Session) {
     const alert = await this.alertController.create({
       header: 'What was the final result',
@@ -79,7 +101,6 @@ export class SmCurrentTaskPage implements OnInit {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
@@ -106,13 +127,6 @@ export class SmCurrentTaskPage implements OnInit {
     const actionSheet = await this.actionSheetController.create({
       header: 'Actions',
       buttons: [{
-        text: 'Close session',
-        role: 'destructive',
-        icon: 'lock-closed',
-        handler: () => {
-          this.firebaseService.closeSession(session.id);
-        }
-      }, {
         text: 'Close voting round',
         role: 'destructive',
         icon: 'time',
@@ -120,16 +134,23 @@ export class SmCurrentTaskPage implements OnInit {
           this.firebaseService.closeVoting(session);
         }
       }, {
-        text: 'Clear users',
-        icon: 'people',
-        handler: () => {
-          this.firebaseService.clearSessionUsers(session.id);
-        }
-      }, {
         text: 'New task',
         icon: 'add',
         handler: () => {
           this.showEndAlert(session);
+        }
+      }, {
+        text: 'Close session',
+        role: 'destructive',
+        icon: 'lock-closed',
+        handler: () => {
+          this.showEndSessionAlert(session);
+        }
+      }, {
+        text: 'Clear users',
+        icon: 'people',
+        handler: () => {
+          this.firebaseService.clearSessionUsers(session.id);
         }
       }, {
         text: 'Cancel',
