@@ -10,6 +10,6 @@
       <h3>{{task.label}}</h3>
       <h3>Result: {{task.finalResult}}</h3>
     </div>
-    <app-result-table [pastRounds]="session.currentTask.rounds"></app-result-table>
+    <app-result-table [pastRounds]="task.rounds"></app-result-table>
   </div>
 </ion-content>

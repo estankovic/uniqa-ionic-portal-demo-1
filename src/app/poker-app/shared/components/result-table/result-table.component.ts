@@ -29,7 +29,10 @@ export class ResultTableComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const userIds = this.extractUsers([...this.pastRounds, this.activeRound]);
+
+    console.log('g', changes.pastRounds.currentValue);
+    console.log('g', changes.activeRound?.currentValue);
+    const userIds = this.extractUsers(this.activeRound ? [...this.pastRounds, this.activeRound] : [...this.pastRounds]);
     this.tableData = this.buildTableData(userIds, this.pastRounds, this.activeRound);
   }
 

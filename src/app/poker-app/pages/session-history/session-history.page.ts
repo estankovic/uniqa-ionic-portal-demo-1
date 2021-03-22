@@ -13,8 +13,10 @@ import {switchMap, tap} from 'rxjs/operators';
 export class SessionHistoryPage implements OnInit {
   session$: Observable<Session> = this.activeRoute.params.pipe(
       switchMap((params) => {
+        console.log(params);
         return this.firebaseService.getSingleSession(params.id);
-      })
+      }),
+    tap(console.log)
   );
 
   constructor(private firebaseService: FirebaseService, private activeRoute: ActivatedRoute) { }

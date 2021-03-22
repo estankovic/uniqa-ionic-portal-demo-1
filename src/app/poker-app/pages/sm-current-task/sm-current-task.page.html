@@ -11,7 +11,7 @@
   <ion-content fullscreen="true" class="ion-padding">
 
     <ng-container *ngIf="isOwner$ | async; else defaultName">
-      <ion-button expand="block" (click)="showActions()">Show actions</ion-button>
+      <ion-button expand="block" (click)="showActions(session)">Show actions</ion-button>
       <ion-item [formGroup]="form">
         <ion-label position="floating">Task Name</ion-label>
         <ion-input formControlName="taskName"></ion-input>

@@ -85,12 +85,12 @@ export class SmCurrentTaskPage implements OnInit {
           }
         }, {
           text: 'Confirm',
-          handler: (finalResult) => {
+          handler: (result) => {
             const tempSession = {
               ...session,
               currentTask: {
                 ...session.currentTask,
-                finalResult
+                finalResult: result.finalResult
               }
             } as Session;
             this.firebaseService.createNewTask(tempSession);
