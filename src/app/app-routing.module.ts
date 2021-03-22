@@ -9,16 +9,7 @@ const routes: Routes = [
   {
     path: 'health-detail/:id',
     loadChildren: () =>
-      import('./pages/health-insurance-detail/health-insurance-detail.module').then(m => m.HealthInsuranceDetailPageModule)
-  },
-  {
-    path: 'poker-app',
-    loadChildren: () =>
-      import('./poker-app/poker-app-routing.module').then(m => m.PokerAppRoutingModule)
-  },
-  {
-    path: 'contact',
-    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+        import('./pages/health-insurance-detail/health-insurance-detail.module').then(m => m.HealthInsuranceDetailPageModule)
   },
 ];
 @NgModule({
