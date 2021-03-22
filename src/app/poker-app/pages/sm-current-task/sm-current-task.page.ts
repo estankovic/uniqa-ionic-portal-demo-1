@@ -2,10 +2,11 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ActionSheetController, AlertController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../../shared/services/firebase.service';
-import {debounceTime, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import {debounceTime, map, switchMap, tap, withLatestFrom} from 'rxjs/operators';
 import {Session} from '../../models/firestore';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {FormControl, FormGroup} from '@angular/forms';
+import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-sm-current-task',
@@ -31,6 +32,17 @@ export class SmCurrentTaskPage implements OnInit {
         }
       })
   );
+
+  isOwner$ = combineLatest([
+    fromPromise(this.firebaseService.getStorageItem(FirebaseService.userEmail)),
+    this.session$
+  ]).pipe(
+    map(([storedEmail, session]) => {
+      return storedEmail === session.ownerEmail;
+    }),
+  );
+
+
   form: FormGroup = new FormGroup({
     taskName: new FormControl('')
   });
