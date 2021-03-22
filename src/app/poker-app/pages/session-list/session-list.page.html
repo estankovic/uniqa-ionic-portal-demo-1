@@ -1,0 +1,18 @@
+<ion-content fullscreen="true" class="ion-padding">
+    <div class="sessions-toolbar">
+      <h1>Sessions</h1>
+      <ion-button (click)="onCreateSessionButtonClick()">Create session</ion-button>
+    </div>
+    <ion-item lines="none">
+        <ion-label>Show old</ion-label>
+        <ion-checkbox (ionChange)="onShowOldChange($event.detail.checked)" slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-list *ngIf="sessions$ | async as sessions">
+        <ion-list-header>All sessions</ion-list-header>
+        <ion-item *ngFor="let session of sessions">
+          <ion-label [ngClass]="{
+            'closed-session': session.closedAt
+          }" [routerLink]="session.closedAt ? ['/poker-app/session-history', session.id] : ['/poker-app/session', session.id]">{{session.label}}</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

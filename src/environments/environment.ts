@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    firebaseConfig: {
+        apiKey: 'AIzaSyAgBDBLht0O8NcfFhm0EOWkSw1gWdGWQ5g',
+        authDomain: 'scrumpokercreathon.firebaseapp.com',
+        projectId: 'scrumpokercreathon',
+        storageBucket: 'scrumpokercreathon.appspot.com',
+        messagingSenderId: '415774280532',
+        appId: '1:415774280532:web:1720e6c30ca546205456c1',
+        measurementId: 'G-86MM3T1TMZ'
+    }
 };
 
 /*
