@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./poker-app/poker-app-routing.module').then(m => m.PokerAppRoutingModule)
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
 ];
 @NgModule({
   imports: [
