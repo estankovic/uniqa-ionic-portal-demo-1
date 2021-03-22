@@ -5,9 +5,12 @@ import {IsLoggedInGuard} from './shared/services/is-logged-in.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/session-list/session-list.module').then(m => m.SessionListPageModule),
     canActivate: [IsLoggedInGuard],
     children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/session-list/session-list.module').then(m => m.SessionListPageModule),
+      },
       {
         path: 'session/:id',
         loadChildren: () => import('./pages/sm-current-task/sm-current-task.module').then( m => m.SmCurrentTaskPageModule),
